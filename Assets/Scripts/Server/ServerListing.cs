@@ -21,11 +21,33 @@ public class ServerListing : MonoBehaviour
     }
     public void OnClickEnterServer()
     {
-        // 1. 현재 접속 서버이름 전달
-        // 2. addictScene 활용
-        // 3. 현재 접속 서버 이름 저장
+        // 데이터를 담은 GameObject 생성
+        GameObject dataObject = new GameObject("DataObject");
+        dataObject.AddComponent<MyDataComponent>();
+        dataObject.GetComponent<MyDataComponent>().myData = this.serverName.text;
 
-        SceneManager.LoadScene("Main");
 
+        // Main Scene 로드
+        SceneManager.LoadSceneAsync("Main", LoadSceneMode.Additive);
+
+        // Main Scene에서 데이터 가져오기
+        Scene mainScene = SceneManager.GetSceneByName("Main");
+        GameObject[] rootObjects = mainScene.GetRootGameObjects();
+        foreach (GameObject rootObject in rootObjects)
+        {
+            MyDataComponent dataComponent = rootObject.GetComponent<MyDataComponent>();
+            if (dataComponent != null)
+            {
+                Debug.Log(dataComponent.myData);
+            }
+        }
+
+        // 이전 컴포넌트 끄기
+        foreach (GameObject go in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            go.SetActive(false);
+        }
+        // Additive Scene unload
+        SceneManager.UnloadSceneAsync("Main");
     }
 }

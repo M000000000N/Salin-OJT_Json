@@ -13,7 +13,8 @@ public class ServerListingMenu : MonoBehaviour
 
     void Start()
     {
-        GetCurrentServerList();
+        if (network != null)
+            GetCurrentServerList();
     }
 
     private void GetCurrentServerList()
@@ -28,7 +29,7 @@ public class ServerListingMenu : MonoBehaviour
     {
         ServerListing listing = Instantiate(serverListing, content);
 
-        if(listing != null)
+        if (listing != null)
         {
             listing.SetServerName(ServerDto);
             listings.Add(listing);

@@ -37,16 +37,10 @@ public class Network : MonoBehaviour
         if(www.error == null)
         {
             string json = www.downloadHandler.text; // 응답을 텍스트로 보여줌
-            Debug.Log(www.downloadHandler.text);
 
             data = JsonUtility.FromJson<ServerListData>(json); // json 파일에서 받은 데이터 저장
 
             // string jsonString = JsonUtility.ToJson(data, true); // json으로 이쁘게 변환
-
-            for (int i = 0; i < data.rows.Count; i++)
-            {
-                Debug.Log(data.rows[i].serverName);
-            }
         }
         else
         {
