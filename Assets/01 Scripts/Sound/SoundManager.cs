@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] AudioSource audioSource;
+    AudioSource audioSource;
     [SerializeField] AudioClip sound;
 
     void Start()
     {
-        audioSource.GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayCrashSound()
