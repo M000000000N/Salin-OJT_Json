@@ -3,30 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SoundPanel : MonoBehaviour
 {
+    [Header("사운드")]
     [SerializeField] Button soundButton;
     [SerializeField] TextMeshProUGUI soundName;
     private bool isSoundOn;
 
+    [Header("진동")]
     [SerializeField] Button vibeButton;
     [SerializeField] TextMeshProUGUI vibeName;
     private bool isVibeOn;
 
-    [SerializeField] GameData data;
-
-    void Start()
+    void Awake()
     {
         //soundButton.onClick.AddListener(OnClickSoundButton);
         //vibeButton.onClick.AddListener(OnClickVibeButton);
+    }
+
+    private void Start()
+    {
         Initioalize();
     }
 
     private void Initioalize()
     {
-        SetSound(data.sound);
-        SetVibe(data.vibe);
+        SetSound(GameData.Instance.sound);
+        SetVibe(GameData.Instance.vibe);
     }
 
     public void OnClickSoundButton()
@@ -47,7 +52,7 @@ public class SoundPanel : MonoBehaviour
             soundName.text = "소리끔";
 
         isSoundOn = isOn;
-        data.sound = isOn;
+        GameData.Instance.sound = isOn;
     }
 
     private void SetVibe(bool isOn)
@@ -58,7 +63,7 @@ public class SoundPanel : MonoBehaviour
             vibeName.text = "진동끔";
 
         isVibeOn = isOn;
-        data.vibe = isOn;
+        GameData.Instance.vibe = isOn;
     }
 
 }

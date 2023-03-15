@@ -3,25 +3,45 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 public class GameDataParsing : MonoBehaviour
 {
-    [SerializeField] GameData data;
     [SerializeField] TextMeshProUGUI stateText;
 
+    string path;
+    string fileName = "GameData2";
     void Start()
     {
-        SaveJson();
+        path = Application.dataPath + "/";
+        SaveData();
+        LoadData();
     }
 
-    public void SaveJson() // 스크립터블 오브젝트를 json으로 저장
+    public void SaveData()
     {
-        string json = JsonUtility.ToJson(data, true);
-        Debug.Log("제이슨\n" + json);
+        // 1. 오브젝트를 JSON형태의 string 형식으로 바꿈
+        string json = JsonUtility.ToJson(GameData.Instance, true);
 
-        string fileName = "GameData1";
-        string path = Application.dataPath + '/' + fileName + ".json";
+        // 2. 설정한 주소에 json저장
+        File.WriteAllText(path + fileName, json);
 
-        File.WriteAllText(path, json);
-        stateText.text = $"스크립터블\nServer : {data.server}\nHp : {data.hp}\nScore : {data.score}\nSound : {data.sound}\nVibe : {data.vibe}";
+        // 3. 상태UI 설정
+        stateText.text = 
+            $"Server : {GameData.Instance.server}\n" +
+            $"Hp : {GameData.Instance.hp}\n" +
+            $"Score : {GameData.Instance.score}";
+    }
+
+    public void LoadData()
+    {
+        // 1. 설정한 주소에서 json 받아옴
+        string json = File.ReadAllText(path + fileName);
+        JsonUtility.FromJsonOverwrite(json, GameData.Instance);
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveData();
     }
 }
