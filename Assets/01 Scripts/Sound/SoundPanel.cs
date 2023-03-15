@@ -13,48 +13,52 @@ public class SoundPanel : MonoBehaviour
     [SerializeField] Button vibeButton;
     [SerializeField] TextMeshProUGUI vibeName;
     private bool isVibeOn;
-    // Start is called before the first frame update
+
+    [SerializeField] GameData data;
+
     void Start()
     {
-        soundButton.onClick.AddListener(OnClickSoundButton);
-        vibeButton.onClick.AddListener(OnClickVibeButton);
+        //soundButton.onClick.AddListener(OnClickSoundButton);
+        //vibeButton.onClick.AddListener(OnClickVibeButton);
         Initioalize();
     }
+
     private void Initioalize()
     {
-        soundName.text = "¼Ò¸®ÄÔ";
-        isSoundOn = true;
-        vibeName.text = "Áøµ¿ÄÔ";
-        isVibeOn = true;
+        SetSound(data.sound);
+        SetVibe(data.vibe);
     }
+
     public void OnClickSoundButton()
     {
-        if (isSoundOn)
-        {
-            isSoundOn = false;
-            soundName.text = "¼Ò¸®²û";
-            AudioListener.volume = 0;
-        }
-        else
-        {
-            isSoundOn = true;
-            soundName.text = "¼Ò¸®ÄÔ";
-            AudioListener.volume = 1;
-        }
+        SetSound(!isSoundOn);
     }
-    public void OnClickVibeButton() // Áøµ¿ ²ô°í ÄÑ±â
+
+    public void OnClickVibeButton()
     {
-        if (isVibeOn)
-        {
-            isVibeOn = false;
-            vibeName.text = "Áøµ¿²û";
-            // Handheld.Vibrate();
-        }
+        SetVibe(!isVibeOn);
+    }
+   
+    private void SetSound(bool isOn)
+    {
+        if (isOn)
+            soundName.text = "¼Ò¸®ÄÔ";
         else
-        {
-            isVibeOn = true;
+            soundName.text = "¼Ò¸®²û";
+
+        isSoundOn = isOn;
+        data.sound = isOn;
+    }
+
+    private void SetVibe(bool isOn)
+    {
+        if (isOn)
             vibeName.text = "Áøµ¿ÄÔ";
-        }
+        else
+            vibeName.text = "Áøµ¿²û";
+
+        isVibeOn = isOn;
+        data.vibe = isOn;
     }
 
 }
