@@ -9,7 +9,7 @@ public class SceneRoot : MonoBehaviour
 
     private FollowCamera followCamera = null;
 
-    private void Awake()
+    private void Start()
     {
         Debug.Assert(playerManager, "PlayerManager is Null !!");
         Debug.Assert(worldManager, "WorldManager is Null !!");
@@ -18,10 +18,6 @@ public class SceneRoot : MonoBehaviour
             followCamera = Camera.main.GetComponent<FollowCamera>();
 
         Debug.Assert(followCamera, "FollowCamera is Null !!");
-    }
-
-    private void Start()
-    {
         followCamera.StartFollow(playerManager.transform);
     }
 }
