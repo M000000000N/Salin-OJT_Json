@@ -33,6 +33,6 @@ public class BulletManager : MonoBehaviour
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
         bullet.Fire(bound);
-        SoundManager.Instance.PlayCrashSound();
+        SoundManager.Instance.PlaySound(0);
     }
 }
