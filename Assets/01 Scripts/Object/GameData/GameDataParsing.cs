@@ -28,9 +28,9 @@ public class GameDataParsing : MonoBehaviour
 
         // 3. 상태UI 설정
         stateText.text = 
-            $"Server : {GameData.Instance.server}\n" +
-            $"Hp : {GameData.Instance.hp}\n" +
-            $"Score : {GameData.Instance.score}";
+            $"Server : {GameData.Instance.Server}\n" +
+            $"Hp : {GameData.Instance.Hp}\n" +
+            $"Score : {GameData.Instance.Score}";
     }
 
     public void LoadData()

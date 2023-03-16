@@ -42,7 +42,9 @@ public class ServerListing : MonoBehaviour
         JsonUtility.FromJsonOverwrite(json, GameData.Instance);
 
         // 3. 서버데이터 변경
-        GameData.Instance.server = serverName.text;
+        GameData.Instance.Server = serverName.text;
+        GameData.Instance.Hp = 5;
+        GameData.Instance.Score = 0;
 
         StartCoroutine(LoadYourAsyncScene());
     }
@@ -51,6 +53,9 @@ public class ServerListing : MonoBehaviour
     {
         // 1. 나중에 언로드 될 현재 씬 저장
         Scene currentScene = SceneManager.GetActiveScene();
+
+        // [개선필요] 카메라 해제
+        Camera.main.enabled = false;
 
         // 2. 현재 씬과 동시에 백그라운드에서 메인씬 로드
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Main", LoadSceneMode.Additive); 
