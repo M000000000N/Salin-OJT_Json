@@ -6,7 +6,8 @@ using System.IO;
 public class Network : MonoBehaviour
 {
     private ServerListData data;
-    public ServerListData Data { get { return data; }  }
+    public ServerListData Data { get { return data; } }
+    public string exampleJson;
 
     [System.Serializable]
     public struct ServerListData
@@ -28,13 +29,13 @@ public class Network : MonoBehaviour
 
     IEnumerator WebRequestGet()
     {
-        string url = "https://api.neople.co.kr/df/servers?apikey=vDk9MxNJ7nup36IA3l4cfOQlxAhgx19H";
-        
+        string url = "https://api.neople.co.kr/df/servers?apikey=MubuMrf9F18O577Ph3I7t0fLpBTs4Kh0";
+
         UnityWebRequest www = UnityWebRequest.Get(url); // 정보를 요청
 
         yield return www.SendWebRequest(); // 응답이 돌아올 때 까지 기다림
 
-        if(www.error == null)
+        if (www.error == null)
         {
             string json = www.downloadHandler.text; // 응답을 텍스트로 보여줌
 
@@ -44,7 +45,8 @@ public class Network : MonoBehaviour
         }
         else
         {
-            Debug.Log("서버를 불러오지 못했습니다.");
+            Debug.Log("서버를 불러오진 못했지만 미리 저장해둔 걸로 로드합니다.");
+            data = JsonUtility.FromJson<ServerListData>(exampleJson);
         }
     }
 }
