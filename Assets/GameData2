@@ -1,7 +1,7 @@
 {
-    "server": "프레이",
-    "hp": 0,
-    "score": 0,
-    "sound": false,
-    "vibe": true
+    "Server": "카인",
+    "Hp": 0,
+    "Score": 100,
+    "Sound": true,
+    "Vibe": false
 }
