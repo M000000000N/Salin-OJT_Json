@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class SoundPanel : MonoBehaviour
 {
@@ -30,8 +29,8 @@ public class SoundPanel : MonoBehaviour
 
     private void Initioalize()
     {
-        SetSound(GameData.Instance.sound);
-        SetVibe(GameData.Instance.vibe);
+        SetSound(GameData.Instance.Sound);
+        SetVibe(GameData.Instance.Vibe);
     }
 
     public void OnClickSoundButton()
@@ -52,7 +51,7 @@ public class SoundPanel : MonoBehaviour
             soundName.text = "¼Ò¸®²û";
 
         isSoundOn = isOn;
-        GameData.Instance.sound = isOn;
+        GameData.Instance.Sound = isOn;
     }
 
     private void SetVibe(bool isOn)
@@ -63,7 +62,7 @@ public class SoundPanel : MonoBehaviour
             vibeName.text = "Áøµ¿²û";
 
         isVibeOn = isOn;
-        GameData.Instance.vibe = isOn;
+        GameData.Instance.Vibe = isOn;
     }
 
 }
