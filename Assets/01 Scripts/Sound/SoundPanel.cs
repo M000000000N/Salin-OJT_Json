@@ -9,7 +9,6 @@ public class SoundPanel : MonoBehaviour
     [Header("»ç¿îµå")]
     [SerializeField] Button soundButton;
     [SerializeField] TextMeshProUGUI soundName;
-    private bool isSoundOn;
 
     [Header("Áøµ¿")]
     [SerializeField] Button vibeButton;
@@ -35,22 +34,26 @@ public class SoundPanel : MonoBehaviour
 
     public void OnClickSoundButton()
     {
-        SetSound(!isSoundOn);
+        SetSound(!GameData.Instance.Sound);
     }
 
     public void OnClickVibeButton()
     {
-        SetVibe(!isVibeOn);
+        SetVibe(!GameData.Instance.Vibe);
     }
    
     private void SetSound(bool isOn)
     {
         if (isOn)
+        {
             soundName.text = "¼Ò¸®ÄÔ";
+            SoundManager.Instance.SetVolume(1);
+        }
         else
+        {
             soundName.text = "¼Ò¸®²û";
-
-        isSoundOn = isOn;
+            SoundManager.Instance.SetVolume(0);
+        }
         GameData.Instance.Sound = isOn;
     }
 
@@ -61,8 +64,6 @@ public class SoundPanel : MonoBehaviour
         else
             vibeName.text = "Áøµ¿²û";
 
-        isVibeOn = isOn;
         GameData.Instance.Vibe = isOn;
     }
-
 }
