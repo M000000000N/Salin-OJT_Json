@@ -453,10 +453,10 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 1050, y: 150}
+  m_CellSize: {x: 700, y: 240}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
-  m_ConstraintCount: 2
+  m_ConstraintCount: 3
 --- !u!1 &817373090
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,6 +937,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1543095911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1543095912}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1543095912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543095911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1897791430
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,10 +1001,10 @@ RectTransform:
   m_Father: {fileID: 1153535013}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: -200, y: 100}
+  m_SizeDelta: {x: 1740, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1897791432
 MonoBehaviour:
@@ -1101,6 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad085c64f5de3db45b18fe05ef66966e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exampleJson: "{\"rows\":[{\"serverId\":\"cain\",\"serverName\":\"\uCE74\uC778\"},{\"serverId\":\"diregie\",\"serverName\":\"\uB514\uB808\uC9C0\uC5D0\"},{\"serverId\":\"siroco\",\"serverName\":\"\uC2DC\uB85C\uCF54\"},{\"serverId\":\"prey\",\"serverName\":\"\uD504\uB808\uC774\"},{\"serverId\":\"casillas\",\"serverName\":\"\uCE74\uC2DC\uC57C\uC2A4\"},{\"serverId\":\"hilder\",\"serverName\":\"\uD790\uB354\"},{\"serverId\":\"anton\",\"serverName\":\"\uC548\uD1A4\"},{\"serverId\":\"bakal\",\"serverName\":\"\uBC14\uCE7C\"}]} "
 --- !u!4 &1912088626
 Transform:
   m_ObjectHideFlags: 0
